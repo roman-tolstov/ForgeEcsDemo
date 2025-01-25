@@ -7,7 +7,7 @@ namespace Systems
 {
   public class SpawnBulletSystem : IUpdateSystem
   {
-    Entities.With<CPosition, CRotation>.Where<CIsCreateBullet> _createBullet;
+    private Entities.With<CPosition, CRotation>.Where<CIsCreateBullet> _createBullet;
     
     public void Update()
     {

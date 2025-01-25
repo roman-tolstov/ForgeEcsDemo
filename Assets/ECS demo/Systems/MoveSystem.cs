@@ -6,7 +6,7 @@ namespace Systems
 {
   public class MoveSystem : IUpdateSystem
   {
-    Entities.With<CMoveInput, CRigidbody, CTransform> _units;
+    private Entities.With<CMoveInput, CRigidbody, CTransform> _units;
     
     public void Update()
     {
