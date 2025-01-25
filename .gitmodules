@@ -1,0 +1,3 @@
+[submodule "Assets/ECS demo/forgeecs"]
+	path = Assets/ECS demo/forgeecs
+	url = https://github.com/roman-tolstov/forgeecs
