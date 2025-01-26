@@ -15,8 +15,8 @@ public class BulletController : MonoBehaviour
   {
     if (other.gameObject.TryGetComponent<BulletController>(out var _))
       return;
-    
-    Entity.GetIfAlive(out var entity);
+
+    var entity = Entity.Unseal;
 
     if (other.gameObject.TryGetComponent<EntityHolder>(out var holder)
         && holder.Entity.GetIfAlive(out var target))
