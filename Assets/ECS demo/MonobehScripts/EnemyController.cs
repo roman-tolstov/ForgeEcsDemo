@@ -11,12 +11,6 @@ public class EnemyController : MonoBehaviour
   private void Start()
   {
     Initialize();
-    
-    var createBulletEntity = World.First.CreateEntity();
-    createBulletEntity.Add<CPosition>().Position = transform.position + transform.forward * 2;
-    createBulletEntity.Add<CRotation>().Rotation = Quaternion.LookRotation(transform.forward);
-    createBulletEntity.Tag<CIsCreateBullet>();
-    createBulletEntity.Tag<CIsEnemy>();
   }
 
   public void Initialize()
@@ -53,7 +47,7 @@ public class EnemyController : MonoBehaviour
       createBulletEntity.Add<CPosition>().Position = transform.position + transform.forward * 2;
       createBulletEntity.Add<CRotation>().Rotation = Quaternion.LookRotation(transform.forward);
       createBulletEntity.Tag<CIsCreateBullet>();
-      createBulletEntity.Tag<CIsEnemy>();
+      createBulletEntity.Tag<CIsEnemyBullet>();
       
       _movement = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
       _timeElapsed = 0;

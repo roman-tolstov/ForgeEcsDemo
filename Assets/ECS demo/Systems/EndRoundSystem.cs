@@ -11,16 +11,18 @@ namespace Systems
     
     public void Update()
     {
-      foreach (var roundLost in _roundLost)
+      foreach (var _ in _roundLost)
       {
         World.First.Get<LoseButton>().Button.gameObject.SetActive(true);
         World.First.Clear();
+        return;
       }
 
-      foreach (var roundWon in _roundWon)
+      foreach (var _ in _roundWon)
       {
         World.First.Get<WinButton>().Button.gameObject.SetActive(true);
         World.First.Clear();
+        return;
       }
     }
   }

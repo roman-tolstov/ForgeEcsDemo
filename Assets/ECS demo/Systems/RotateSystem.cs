@@ -14,8 +14,9 @@ namespace Systems
       {
         if (unit.C1.MoveInput != Vector3.zero)
         {
-          var lookRotation = Quaternion.LookRotation(unit.C1.MoveInput);
-          unit.C2.Transform.rotation = Quaternion.Slerp(unit.C2.Transform.rotation, lookRotation, Time.deltaTime * 3.5f);
+          var targetRotation = Quaternion.LookRotation(unit.C1.MoveInput);
+          var rotationSpeed = Time.deltaTime * 3.5f;
+          unit.C2.Transform.rotation = Quaternion.Slerp(unit.C2.Transform.rotation, targetRotation, rotationSpeed);
         }
       }  
     }

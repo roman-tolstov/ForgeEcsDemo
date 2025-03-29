@@ -14,16 +14,18 @@ namespace Systems
       foreach (var createBullet in _createBullet)
       {
         var prefab = World.First.Get<BulletPrefabHolder>().BulletPrefab;
-        var bullet = Object.Instantiate(prefab, createBullet.C1.Position, createBullet.C2.Rotation);
-        var bulletEntity = World.First.CreateEntity();
+        var bulletPrefab = Object.Instantiate(prefab, createBullet.C1.Position, createBullet.C2.Rotation);
+        var bullet = World.First.CreateEntity();
 
-        if (createBullet.Entity.Has<CIsEnemy>())
-          bulletEntity.Tag<CIsEnemy>();
+        if (createBullet.Entity.Has<CIsEnemyBullet>())
+          bullet.Tag<CIsEnemyBullet>();
+        else if (createBullet.Entity.Has<CIsPlayerBullet>())
+          bullet.Tag<CIsPlayerBullet>();
         else
-          bulletEntity.Tag<CIsPlayer>();
+          Debug.LogError("Bullet belonging is not specified");
         
-        bullet.GetComponent<BulletController>().Entity = bulletEntity.Seal();
-        bullet.GetComponent<EntityHolder>().Entity = bulletEntity.Seal(); 
+        bulletPrefab.GetComponent<BulletController>().Entity = bullet.Seal();
+        bulletPrefab.GetComponent<EntityHolder>().Entity = bullet.Seal(); 
         
         createBullet.Entity.Destroy();
       }

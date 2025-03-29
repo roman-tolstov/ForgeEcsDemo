@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
       createBulletEntity.Add<CPosition>().Position = transform.position + transform.forward * 2;
       createBulletEntity.Add<CRotation>().Rotation = Quaternion.LookRotation(transform.forward);
       createBulletEntity.Tag<CIsCreateBullet>();
-      createBulletEntity.Tag<CIsPlayer>();
+      createBulletEntity.Tag<CIsPlayerBullet>();
     }
   }
 }

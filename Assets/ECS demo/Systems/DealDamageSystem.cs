@@ -11,30 +11,21 @@ namespace Systems
     {
       foreach (var damage in _damages)
       {
-        var targetEntity = damage.C1.TargetEntity.Unseal;
+        var target = damage.C1.TargetEntity.Unseal;
         
-        if (targetEntity.Has<CIsPlayer>())
+        if (target.Has<CIsPlayer>())
         {
-          if (damage.Entity.Has<CIsPlayer>())
-            continue;
-
           var roundLostEntity = World.First.CreateEntity();
           roundLostEntity.Tag<CIsRoundLost>();
           break;
         }
 
-        if (targetEntity.Has<CIsEnemy>())
+        if (target.Has<CIsEnemy>())
         {
-          if (damage.Entity.Has<CIsEnemy>())
-            continue;
-
           var enemyKilledEntity = World.First.CreateEntity();
           enemyKilledEntity.Tag<CIsEnemyKilled>();
           break;
         }
-
-        targetEntity.Untag<CIsShootable>();
-        targetEntity.Remove<CMoveInput>();
       }
     }
   }

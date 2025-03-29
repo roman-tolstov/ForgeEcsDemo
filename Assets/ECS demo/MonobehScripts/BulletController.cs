@@ -13,7 +13,7 @@ public class BulletController : MonoBehaviour
 
   private void OnCollisionEnter(Collision other)
   {
-    if (other.gameObject.TryGetComponent<BulletController>(out var _))
+    if (other.gameObject.TryGetComponent<BulletController>(out _))
       return;
 
     var entity = Entity.Unseal;
@@ -23,15 +23,15 @@ public class BulletController : MonoBehaviour
     {
       if (target.Has<CIsShootable>())
       {
-        var shotEntity = World.First.CreateEntity();
-        shotEntity.Tag<CIsDamage>();
+        var damageEntity = World.First.CreateEntity();
+        damageEntity.Tag<CIsDamage>();
         
-        if (entity.Has<CIsEnemy>())
-          shotEntity.Tag<CIsEnemy>();
-        else if (entity.Has<CIsPlayer>())
-          shotEntity.Tag<CIsPlayer>();
+        if (entity.Has<CIsEnemyBullet>())
+          damageEntity.Tag<CIsEnemyBullet>();
+        else if (entity.Has<CIsPlayerBullet>())
+          damageEntity.Tag<CIsPlayerBullet>();
 
-        shotEntity.Add<CTargetEntity>().TargetEntity = target.Seal();
+        damageEntity.Add<CTargetEntity>().TargetEntity = target.Seal();
       }
     }
     

@@ -6,7 +6,7 @@ namespace Components
   [Il2CppSetOption(Option.NullChecks, false)]
   [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
   [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-  public struct CIsPlayer : ITagComponent
+  public struct CIsPlayerBullet : ITagComponent
   {
     
   }
